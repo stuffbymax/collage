@@ -6,7 +6,8 @@ def comprehensive_connectivity_check():
 
     # 1. HTTP Request Test
     try:
-        url = "http://www.google.com"  # You can replace with any website
+         # You can replace with any website
+        url = "http://www.google.com" 
         response = requests.get(url, timeout=5)
         if response.status_code == 200:
             results["HTTP Test"] = "Internet connection is working (HTTP request succeeded)."
