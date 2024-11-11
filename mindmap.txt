@@ -1,0 +1,76 @@
+Wind & Waves Kiosk App Mind Map
+1. Main Objectives
+
+    Inspire Tourists to visit the store.
+    Promote Products & Lessons offered by the shop.
+    Enable Discoverability at multiple locations.
+    Allow for Special Offers announcements.
+
+2. App Features
+
+    User Interface (UI) Design
+        Visually appealing, water sports-themed design.
+        Interactive menus for easy navigation.
+        Inspirational visuals (images, videos of surfing, scuba diving, etc.).
+        Clear call-to-action buttons for visiting the shop or booking lessons.
+
+    Attract Tourists to Store
+        Directions to the shop from various kiosk locations.
+        Highlight unique offerings (e.g., one-of-a-kind products or local expertise).
+        Feature testimonials or reviews from past customers.
+
+    Showcase Products
+        Product catalog: Show images and descriptions for surfing, windsurfing, scuba diving, and kite surfing equipment.
+        Product availability & rental options: Equipment that can be rented or purchased.
+        Interactive product info: Click to see features, photos, and videos.
+
+    Promote Lessons
+        Lesson catalog: Surfing, Windsurfing, Scuba Diving, Kite Surfing.
+        General overview of lesson structures.
+        Highlight instructors with experience levels.
+        Booking encouragement: Mention "Speak with our friendly team for more details!"
+
+    Special Offers Section
+        Promotions and seasonal offers: Visual banners for deals on equipment and lessons.
+        Ability to update content remotely for time-sensitive promotions.
+
+    Location-Specific Information
+        Local attractions or spots for water sports near each kiosk.
+        Map of Torquay with routes from kiosk locations to the shop.
+
+3. Technical Requirements
+
+    Kiosk Mode Compatibility
+        Set up to run on PCs in Kiosk mode.
+        Secure, with limited user access (restrict access to just the app).
+    Remote Management
+        Enable remote updates to content, especially for special offers.
+    Secure Data Handling
+        Data security features for customer interaction tracking or user data.
+    Offline Functionality
+        If internet is unavailable, app should still display basic information on products and lessons.
+
+4. Content Management
+
+    Easy-to-Update Content System
+        User-friendly interface for Norman to update offers and information.
+        Ability to add or remove promotional banners.
+    Image/Video Display
+        High-quality images and video library of lessons and water sports.
+        Rotate through inspirational media for each water sport offered.
+
+5. Deployment Timeline
+
+    Design and Development (1 week)
+        Focus on high-priority functionalities (UI, Product Showcase, Lesson Overview).
+    Testing & Feedback (2-3 days)
+        Ensure app functions correctly in Kiosk mode and meets user experience goals.
+    Final Adjustments & Deployment
+
+6. Future Considerations
+
+    Potential App Expansion
+        Integration with online booking systems.
+        Expand app to offer equipment rentals directly.
+    Analytics for Kiosk Usage
+        Capture interaction data to analyze popular features and tourist engagement.
