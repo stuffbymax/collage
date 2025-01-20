@@ -5,3 +5,6 @@ def print_tree(level, max_level=20):
     print_tree(level + 1)
 
 print_tree(1)
+
+
+https://www.transum.org/Maths/Activity/Sort/Shapes.asp?Level=2
