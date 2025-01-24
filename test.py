@@ -11,62 +11,64 @@ class Person:
         self.age = self.age + 1
 
     def get_idnum(self):
-        # This method can be used to retrieve the idnum
         return self.Idnum
 
     def set_idnum(self, new_idnum):
-        # This is the "setter" method to update the idnum
         self.Idnum = new_idnum
+        
+    def __str__(self): # added for better printing
+        return f"Name: {self.name}, Age: {self.age}, ID: {self.Idnum}"
 
-ben = Person(31, "Ben", "123456")  # Pass idnum as an argument
-paul = Person(42, "Paul", "987654")  # Pass idnum as an argument
+# Store Person objects in a list
+people = [
+    Person(31, "Ben", "123456"),
+    Person(42, "Paul", "987654"),
+    Person(22, "Sarah", "456789"), #additional person to test scalability
+    Person(60, "John", "789012")  #additional person to test scalability
+]
 
-print(ben.name, ben.age, ben.get_idnum())  # Use get_idnum to retrieve idnum
-print(paul.name, paul.age, paul.get_idnum())  # Use get_idnum to retrieve idnum
+# Initial print of the persons
+for person in people:
+  print(person)
 
 while True:
-  print("do you want to update ID numbers?")
-  print("1. yes")
-  print("2. no")
+    print("\nDo you want to update ID numbers?")
+    print("1. Yes")
+    print("2. No")
 
-  choice = input("Enter your choice: ")
+    choice = input("Enter your choice: ")
 
-  if not choice.isdigit():
-    print("Invalid input. Please enter a number.")
-    time.sleep(2)
-    continue
+    try:
+        choice = int(choice)
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        time.sleep(2)
+        continue
 
-  choice = int(choice)
-
-  if choice == 1:
-      print("Who's ID number do you want to update?")
-      print("1.", ben.name)
-      print("2.", paul.name)
-      person_choice = input("Enter your choice (1 or 2): ")
-
-      if not person_choice.isdigit():
-          print("Invalid input. Please enter a number.")
-          time.sleep(2)
-          continue
-
-      person_choice = int(person_choice)
-
-      if person_choice == 1 or person_choice == 2:
-          new_idnum = input("Enter the new ID number: ")
-          if person_choice == 1:
-              ben.set_idnum(new_idnum)
-              print(f"Updated {ben.name}'s ID number.")
-              print(ben.name, ben.age, ben.get_idnum())
-          elif person_choice == 2:
-              paul.set_idnum(new_idnum)
-              print(f"Updated {paul.name}'s ID number.")
-              print(paul.name, paul.age, paul.get_idnum())
-      else:
-           print("Invalid input. Please select 1 or 2.")
+    if choice == 1:
+        print("Whose ID number do you want to update?")
+        for index, person in enumerate(people, 1):
+            print(f"{index}. {person.name}")
+        
+        person_choice = input("Enter your choice (number): ")
+        try:
+            person_choice = int(person_choice)
+        except ValueError:
+           print("Invalid input. Please enter a number.")
            time.sleep(2)
-  elif choice == 2:
-      print("No IDs updated")
-      break  # Exit the loop if the user chooses not to update
-  else:
-      print("Invalid choice. Please choose 1 or 2.")
-      time.sleep(2)
+           continue
+
+        if 1 <= person_choice <= len(people):
+           new_idnum = input("Enter the new ID number: ")
+           people[person_choice - 1].set_idnum(new_idnum)
+           print(f"Updated {people[person_choice - 1].name}'s ID number.")
+           print(people[person_choice-1])
+        else:
+            print("Invalid input. Please select a valid person number.")
+            time.sleep(2)
+    elif choice == 2:
+        print("No IDs updated.")
+        break
+    else:
+        print("Invalid choice. Please choose 1 or 2.")
+        time.sleep(2)
