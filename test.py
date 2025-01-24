@@ -1,5 +1,6 @@
 import random
 import time
+import json
 
 class Person:
     def __init__(self, age, name, Idnum):
@@ -15,26 +16,57 @@ class Person:
 
     def set_idnum(self, new_idnum):
         self.Idnum = new_idnum
-        
-    def __str__(self): # added for better printing
+
+    def __str__(self):
         return f"Name: {self.name}, Age: {self.age}, ID: {self.Idnum}"
 
-# Store Person objects in a list
+    def to_dict(self): # added to assist in saving
+        return {
+            "age": self.age,
+            "name": self.name,
+            "Idnum": self.Idnum
+        }
+
+    @classmethod
+    def from_dict(cls, data): # added to assist in loading
+        return cls(data["age"], data["name"], data["Idnum"])
+
+def save_people(people, filename):
+    """Saves the list of people to a JSON file."""
+    people_data = [person.to_dict() for person in people]
+    with open(filename, "w") as file:
+        json.dump(people_data, file, indent=4) # added indent=4 for human readability
+
+def load_people(filename):
+    """Loads a list of people from a JSON file."""
+    try:
+        with open(filename, "r") as file:
+            people_data = json.load(file)
+        return [Person.from_dict(data) for data in people_data]
+    except FileNotFoundError:
+        return [] #Return an empty list if no save file
+
+# Default list
 people = [
     Person(31, "Ben", "123456"),
     Person(42, "Paul", "987654"),
-    Person(22, "Sarah", "456789"), #additional person to test scalability
-    Person(60, "John", "789012")  #additional person to test scalability
+    Person(22, "Sarah", "456789"),
+    Person(60, "John", "789012")
 ]
 
-# Initial print of the persons
+# Load people data if it exists
+filename = "people_data.json"
+people = load_people(filename)
+
+# Initial print
 for person in people:
-  print(person)
+    print(person)
 
 while True:
-    print("\nDo you want to update ID numbers?")
-    print("1. Yes")
-    print("2. No")
+    print("\nWhat do you want to do?")
+    print("1. Update ID numbers")
+    print("2. Save")
+    print("3. Quit")
 
     choice = input("Enter your choice: ")
 
@@ -66,9 +98,16 @@ while True:
         else:
             print("Invalid input. Please select a valid person number.")
             time.sleep(2)
+
     elif choice == 2:
-        print("No IDs updated.")
+        save_people(people, filename)
+        print(f"Saved people data to {filename}.")
+        time.sleep(2)
+
+    elif choice == 3:
+        print("Quitting.")
         break
+
     else:
-        print("Invalid choice. Please choose 1 or 2.")
+        print("Invalid choice. Please choose 1, 2, or 3.")
         time.sleep(2)
